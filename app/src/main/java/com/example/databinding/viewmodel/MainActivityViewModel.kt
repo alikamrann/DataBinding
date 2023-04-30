@@ -1,13 +1,16 @@
 package com.example.databinding.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel(startingTotal:Int):ViewModel() {
-    private var total = 0;
     private var count = 0
-    private var sum = 0
+    private var sum =MutableLiveData<Int>()
+    val totalData :LiveData<Int>
+        get() = sum
     init {
-        sum = startingTotal
+        sum.value = startingTotal
     }
     fun getCurrentCount():Int{
         return count
@@ -17,10 +20,10 @@ class MainActivityViewModel(startingTotal:Int):ViewModel() {
     }
 
     fun updateSum(addNumber:Int){
-        sum+=addNumber
+        (sum.value) = (sum.value)?.plus(addNumber)
     }
-    fun setTotal():Int{
-        return  sum;
+    fun setTotal(): Int? {
+        return  sum.value ;
     }
 
 

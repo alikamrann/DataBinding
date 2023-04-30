@@ -3,6 +3,7 @@ package com.example.databinding
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.databinding.databinding.ActivityThirdBinding
 import com.example.databinding.viewmodel.MainActivityViewModel
@@ -19,7 +20,11 @@ class ThirdActivity : AppCompatActivity() {
 
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this,viewModelFactory)[MainActivityViewModel::class.java]
-        binding.textView.text = viewModel.getCurrentCount().toString()
+
+        viewModel.totalData.observe(this, Observer {
+            binding.textView.text = it.toString()
+        })
+
 
         binding.button2.setOnClickListener {
             binding.textView.text = viewModel.getUpdatedCount( ).toString()
