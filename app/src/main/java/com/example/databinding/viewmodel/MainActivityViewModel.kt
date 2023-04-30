@@ -4,26 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainActivityViewModel(startingTotal:Int):ViewModel() {
-    private var count = 0
-    private var sum =MutableLiveData<Int>()
-    val totalData :LiveData<Int>
-        get() = sum
+class MainActivityViewModel : ViewModel() {
+    private var count = MutableLiveData<Int>()
+    val countData: LiveData<Int>
+        get() = count
+
     init {
-        sum.value = startingTotal
-    }
-    fun getCurrentCount():Int{
-        return count
-    }
-    fun getUpdatedCount():Int{
-        return ++count
+        count.value = 0
     }
 
-    fun updateSum(addNumber:Int){
-        (sum.value) = (sum.value)?.plus(addNumber)
-    }
-    fun setTotal(): Int? {
-        return  sum.value ;
+    fun updateCount() {
+        count.value = (count.value)?.plus(1)
     }
 
 

@@ -1,53 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+<data>
 
-    <data>
+    <variable
+        name="myViewModel"
+        type="com.example.databinding.viewmodel.MainActivityViewModel" />
+</data><androidx.constraintlayout.widget.ConstraintLayout
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+tools:context=".MainActivity">
+<TextView
+    android:id="@+id/count_text"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:text="@{String.valueOf(myViewModel.countData)}"
+    android:textSize="66sp"
+    android:textStyle="bold"
+    android:typeface="serif"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.262" />
 
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:ems="10"
-            android:hint="insert your name here"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/submit_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="147dp"
-            android:layout_marginTop="104dp"
-            android:layout_marginEnd="174dp"
-            android:text="submit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-        <TextView
-            android:id="@+id/greeting_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="203dp"
-            android:layout_marginBottom="49dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+<Button
+    android:id="@+id/button"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:onClick="@{()->myViewModel.updateCount()}"
+    android:text="Click Here"
+    android:textSize="30sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout></layout>

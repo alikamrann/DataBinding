@@ -21,19 +21,6 @@ class ThirdActivity : AppCompatActivity() {
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this,viewModelFactory)[MainActivityViewModel::class.java]
 
-        viewModel.totalData.observe(this, Observer {
-            binding.textView.text = it.toString()
-        })
-
-
-        binding.button2.setOnClickListener {
-            binding.textView.text = viewModel.getUpdatedCount( ).toString()
-        }
-
-        binding.button.setOnClickListener {
-             viewModel.updateSum(binding.numberEd.text.toString().toInt())
-            binding.textView.text  = viewModel.setTotal().toString()
-        }
 
 
     }
